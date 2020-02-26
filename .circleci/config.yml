@@ -2,7 +2,7 @@ version: 2
 jobs:
   publish:
     docker:
-      - image: alpine:3.11
+      - image: docker:19.03
     environment:
       DOCKER_USERNAME: secrethub://simon/test/docker/username
       DOCKER_PASSWORD: secrethub://simon/test/docker/password
