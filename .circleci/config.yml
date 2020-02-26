@@ -12,7 +12,7 @@ jobs:
       - run:
           name: Install SecretHub CLI
           environment:
-            VERSION: 0.34.0
+            VERSION: 0.35.0
           command: curl -sSfL https://github.com/secrethub/secrethub-cli/releases/download/v$VERSION/secrethub-v$VERSION-linux-amd64.tar.gz | tar zxf - -C $HOME
       - run:
           name: Build Docker image
