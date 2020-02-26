@@ -17,7 +17,7 @@ jobs:
           command: docker build -t florisvdg/ci-test:$CIRCLE_SHA1 .
       - run:
           name: Authenticate to DockerHub
-          shell: secrethub run -- /bin/bash
+          shell: secrethub run -- /bin/sh
           command: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
       - run:
           name: Publish on DockerHub
