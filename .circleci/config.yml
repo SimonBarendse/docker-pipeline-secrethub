@@ -2,7 +2,7 @@ version: 2
 jobs:
   publish:
     docker:
-      - image: circleci/buildpack-deps:stretch
+      - image: alpine:3.11
     environment:
       DOCKER_USERNAME: secrethub://simon/test/docker/username
       DOCKER_PASSWORD: secrethub://simon/test/docker/password
@@ -11,9 +11,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Install SecretHub CLI
-          environment:
-            VERSION: 0.35.0
-          command: curl -sSfL https://github.com/secrethub/secrethub-cli/releases/download/v$VERSION/secrethub-v$VERSION-linux-amd64.tar.gz | tar zxf - -C $HOME
+          command: apk add --repository https://alpine.secrethub.io/alpine/edge/main --allow-untrusted secrethub-cli
       - run:
           name: Build Docker image
           command: docker build -t florisvdg/ci-test:$CIRCLE_SHA1 .
